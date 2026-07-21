@@ -1,0 +1,40 @@
+BGE-M3
+
+"BAAI/bge-m3"
+
+Ventajas:
+
+multilingüe;
+excelente recuperación;
+bueno para documentos largos;
+muy usado en RAG.
+
+
+Nomic
+Más ligero:
+
+"nomic-ai/nomic-embed-text-v1.5"
+
+Ventajas:
+
+rápido;
+buena calidad;
+menor consumo.
+
+
+
+Arctic Embed
+"Snowflake/snowflake-arctic-embed-m"
+
+Muy bueno para búsqueda documental.
+
+Pregunta: ¿Que es el modelo de cámara?
+
+BGE-M3
+tensor(0.5032)
+La construcci´on caracter´ıstica que involucra directamente a la Geometr´ıa Proyectiva y a la Visi´on Artificial es el llamado _modelo de c´amara_ . Este modelo, que representa la proyecci´on de los objetos de una escena del espacio a una imagen bidimensional, ser´a explicado con detalle en el Cap´ıtulo 5. Dentro de este modelo se ver´a c´omo aspectos de la Geometr´ıa Proyectiva como las _homograf´ıas_ , los _puntos de fuga_ , y la llamada _c´onica del infinito_ van a permitir realizar diversas 
+
+Nomic
+tensor(0.5830)
+### 3.1 Obtención del gradiente  
+Para la obtención del gradiente, lo primero que se realiza es la aplicación de un filtro gaussiano a la imagen original con el objetivo de suavizar la imagen y tratar de eliminar el posible ruido existente. Sin embargo, se debe de tener cuidado de no realizar un suavizado excesivo, pues se podrían perder detalles de la imagen y provocar un pésimo resultado final. Este suavizado se obtiene promediando los valores de intensidad de los píxels en el entorno de vecin
