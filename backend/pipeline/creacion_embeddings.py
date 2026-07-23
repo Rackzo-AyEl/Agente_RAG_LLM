@@ -1,3 +1,5 @@
+#NOTE: Código para generar los embeddings de los md ya extraídos y para vectorizar consultas
+
 # Librerías
 # import pymupdf4llm
 # import re
@@ -6,7 +8,6 @@ import torch
 from extraccion_pdfs_md import extraccion_pdf_md
 from langchain_text_splitters import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
 from pathlib import Path
-from sentence_transformers import SentenceTransformer
 from sentence_transformers.util import cos_sim
 
 
@@ -56,17 +57,7 @@ def generacion_chunks(md, source):
     return chunks
 
 
-def probar_modelo(nombre_modelo, chunks):
-
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-
-    print(f"\nCargando {nombre_modelo}")
-    
-    modelo = SentenceTransformer(
-        nombre_modelo,
-        device=device
-    )
-
+def generar_embedding(chunks, modelo):
     textos = [
         chunk.page_content 
         for chunk in chunks
@@ -78,9 +69,6 @@ def probar_modelo(nombre_modelo, chunks):
         normalize_embeddings=True,
         show_progress_bar=True
     )
-
-    print("Dimensión:")
-    print(embeddings.shape)
 
     return modelo, embeddings
 
@@ -95,7 +83,7 @@ if __name__ == '__main__':
 
     # Iterar por cada PDF en la carpeta de datos
     for pdf in ruta_principal.glob('*.pdf'):
-        print(f"Procesando archivo: {pdf.name}")
+        print(f"\n[*] Procesando archivo: {pdf.name}")
 
         try:
             # Llamada a extracción de MD
@@ -106,35 +94,21 @@ if __name__ == '__main__':
             print("Generando chunks con generacion_chunks")
             chunks = generacion_chunks(md_pdf, pdf.name)
 
-            chunks_prueba = chunks[:100]
+            # Llamada a generación de embeddings
+            modelo, embeddings = generar_embedding(chunks)
 
-            print("Probando modelo con probar_modelo")
-            modelo, embeddings = probar_modelo("BAAI/bge-m3", chunks)
+            # pregunta = "¿Que son las listas descriptivas?"
+            #
+            # vector_pregunta = modelo.encode(
+            #     pregunta,
+            #     normalize_embeddings=True
+            # )
+            #
+            # similitudes = cos_sim(
+            #     vector_pregunta,
+            #     embeddings
+            # )[0]
 
-            pregunta = "¿Que son las listas descriptivas?"
             
-            vector_pregunta = modelo.encode(
-                pregunta,
-                normalize_embeddings=True
-            )
-            
-            
-            similitudes = cos_sim(
-                vector_pregunta,
-                embeddings
-            )[0]
-            
-            
-            indices = similitudes.argsort(
-                descending=True
-            )[:5]
-            
-            
-            for i in indices:
-            
-                print("="*80)
-                print(similitudes[i])
-                print(chunks[i].page_content[:500])
-
         except Exception as e:
             print(f"Error en el procesamiento de {pdf.name}\nError: {e}")

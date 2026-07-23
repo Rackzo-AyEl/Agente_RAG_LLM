@@ -1,3 +1,5 @@
+#NOTE: Código para extraer datos crudos de PDFs, preprocesarlos y devolver contenido en formato MD
+
 # Librerías
 import pymupdf4llm
 import re
@@ -11,7 +13,7 @@ def extraccion_pdf_md(pdf_entrada):
 
     md = pymupdf4llm.to_markdown(pdf_entrada)
 
-    # Normalizar Unicode
+    # Normalizar unicode
     md = unicodedata.normalize("NFC", md)
 
     # Unificar saltos de línea
