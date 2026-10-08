@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Andar ayuda RAG</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main>
+      <header class="hero">
+        <p class="brand">Andar.mx</p>
+        <h1>Centro de ayuda</h1>
+        <p>Asistente de prueba para comerciantes y visitantes de Andar.mx.</p>
+      </header>
+
+      <section class="panel compact" aria-label="Configuración">
+        <label>
+          API base
+          <input id="apiBase" placeholder="http://localhost:8000" autocomplete="off">
+        </label>
+      </section>
+
+      <section class="panel" aria-label="Preguntas rápidas">
+        <h2>Preguntas rápidas</h2>
+        <div id="quickQuestions" class="row"></div>
+      </section>
+
+      <section class="panel" aria-label="Corpus cargado">
+        <h2>Corpus cargado</h2>
+        <p class="hint">Revisa documentos, chunks y multimedia que el RAG tiene preparados.</p>
+        <button id="loadCorpus" type="button">Ver corpus cargado</button>
+        <div id="corpus" class="corpus-list" hidden></div>
+      </section>
+
+      <form id="askForm" class="panel">
+        <label>
+          ¿Qué necesitas resolver?
+          <textarea id="question" rows="4" maxlength="500" required placeholder="Ej. ¿Por qué no aparece mi negocio en el mapa?"></textarea>
+        </label>
+        <p class="hint"><span id="charCount">0</span>/500 caracteres · sesión de prueba con memoria de 30 min</p>
+        <button id="askButton" type="submit">Preguntar</button>
+      </form>
+
+      <p id="status" role="status"></p>
+
+      <section id="answer" class="panel" hidden>
+        <h2 id="title"></h2>
+        <p id="summary"></p>
+
+        <h3>Respuesta</h3>
+        <div id="blocks"></div>
+
+        <h3>Fuentes</h3>
+        <div id="sources"></div>
+
+        <h3>Material de apoyo</h3>
+        <div id="media"></div>
+
+        <h3>Siguientes pasos</h3>
+        <div id="nextActions"></div>
+
+        <h3>Diagnóstico técnico</h3>
+        <p class="hint">El dispositivo reportado corresponde a embeddings/retrieval. Ollama puede usar GPU automáticamente aunque los embeddings estén en CPU.</p>
+        <div id="metadataCards" class="meta-grid"></div>
+        <pre id="metadata"></pre>
+
+        <div class="row feedback">
+          <button type="button" data-feedback="useful">Útil</button>
+          <button type="button" data-feedback="not_useful">No útil</button>
+        </div>
+        <p id="feedbackStatus" role="status"></p>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

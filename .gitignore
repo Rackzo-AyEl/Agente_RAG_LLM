@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+entorno-virtual/
+.env
+API_KEY.txt
+*.log
+services/help-rag/model-cache/
+services/help-rag/ollama-models/
+services/help-rag/artifacts/
+.DS_Store

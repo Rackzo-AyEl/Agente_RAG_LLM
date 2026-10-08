@@ -1,0 +1,4 @@
+# Core server and regression tests use only the Python standard library.
+# Install these only for optional semantic embedding benchmarks / BGE-M3 mode.
+sentence-transformers
+psutil

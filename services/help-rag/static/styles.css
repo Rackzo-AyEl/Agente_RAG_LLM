@@ -1,0 +1,195 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.4;
+  color: rgb(29, 32, 32);
+  background: white;
+}
+
+main {
+  width: min(960px, 100%);
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.hero {
+  padding: 28px;
+  border-radius: 24px;
+  color: white;
+  background: rgb(29, 32, 32);
+}
+
+.brand {
+  margin: 0 0 8px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero h1,
+.hero p {
+  margin-top: 0;
+}
+
+.panel {
+  margin: 16px 0;
+  padding: 18px;
+  border: 1px solid rgb(225, 227, 227);
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 8px 22px rgba(22, 49, 38, 0.08);
+}
+
+.compact {
+  padding: 12px 18px;
+}
+
+.hint {
+  margin: -8px 0 12px;
+  color: #66756d;
+  font-size: 0.9rem;
+}
+
+label,
+textarea,
+input,
+button {
+  display: block;
+  width: 100%;
+}
+
+label,
+section,
+form {
+  margin: 16px 0;
+}
+
+input,
+textarea,
+button {
+  margin-top: 6px;
+  padding: 10px;
+  border: 1px solid #cbbfa9;
+  border-radius: 12px;
+  font: inherit;
+}
+
+input,
+textarea {
+  background: white;
+}
+
+button {
+  cursor: pointer;
+  color: white;
+  border-color: rgb(29, 32, 32);
+  background: rgb(29, 32, 32);
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.row button {
+  width: auto;
+  color: rgb(29, 32, 32);
+  border-color: rgb(225, 227, 227);
+  background: rgb(225, 227, 227);
+}
+
+#answer {
+  background: white;
+}
+
+.block,
+.meta-card,
+.media-card {
+  margin: 10px 0;
+  padding: 12px;
+  border: 1px solid rgb(225, 227, 227);
+  border-radius: 14px;
+  background: white;
+}
+
+.media-holder video,
+.media-holder img {
+  display: block;
+  width: 100%;
+  max-height: 520px;
+  margin-top: 12px;
+  border-radius: 14px;
+  background: #111;
+  object-fit: contain;
+}
+
+.corpus-list details {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid rgb(225, 227, 227);
+  border-radius: 12px;
+  background: white;
+}
+
+.corpus-list summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+}
+
+.meta-card span {
+  display: block;
+  color: #66756d;
+  font-size: 0.85rem;
+}
+
+.meta-card strong {
+  overflow-wrap: anywhere;
+}
+
+.feedback button {
+  color: white;
+  background: rgb(29, 32, 32);
+}
+
+pre,
+li {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+pre {
+  padding: 10px;
+  border-radius: 12px;
+  background: rgb(225, 227, 227);
+}
+
+@media (max-width: 640px) {
+  main {
+    padding: 12px;
+  }
+
+  .hero,
+  .panel {
+    border-radius: 16px;
+  }
+
+  .row button {
+    width: 100%;
+  }
+}
